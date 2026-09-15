@@ -1,0 +1,69 @@
+# InnotechInsider — Apache config for static hosting (Hostinger /public_html)
+
+# Branded 404 (Astro outputs /404.html at the site root)
+ErrorDocument 404 /404.html
+
+# Article redirects — stale-year cleanup (2026-09-02). The content pipeline
+# generated several evergreen "best of / top N" articles with a stale year
+# baked into the title (the Gemini prompt didn't know the real current date —
+# fixed in scripts/lib/gemini.mjs) and, separately, regenerated a few topics
+# more than once. Each cluster was consolidated to one corrected 2026 article;
+# duplicates and two articles whose actual recommendations were obsolete
+# (not just mis-dated) were retired. 301s preserve any existing links/rankings.
+<IfModule mod_alias.c>
+  Redirect 301 /ai-apps/ai-content-creation-2025-capabilities/ /ai-apps/top-ai-tools-content-creation-2026/
+  Redirect 301 /ai-apps/ai-content-creation-tools-2025-transformation/ /ai-apps/top-ai-tools-content-creation-2026/
+  Redirect 301 /ai-apps/top-ai-tools-content-creation-2025/ /ai-apps/top-ai-tools-content-creation-2026/
+  Redirect 301 /ai-apps/top-10-ai-tools-content-creation-2025/ /ai-apps/top-ai-tools-content-creation-2026/
+
+  Redirect 301 /ai/aio-chatgpt-traffic-2025-seo-dead/ /ai-apps/how-to-get-traffic-from-chatgpt-2026-aio-vs-seo/
+  Redirect 301 /ai-apps/chatgpt-referral-traffic-aio-vs-seo-2025/ /ai-apps/how-to-get-traffic-from-chatgpt-2026-aio-vs-seo/
+  Redirect 301 /ai-apps/how-to-get-traffic-from-chatgpt-2025-aio-vs-seo/ /ai-apps/how-to-get-traffic-from-chatgpt-2026-aio-vs-seo/
+
+  Redirect 301 /biz-it/best-pdf-editors-2025-guide/ /biz-it/best-pdf-editors-2026-guide/
+  Redirect 301 /data-security/ditch-chrome-5-next-gen-browsers-2025/ /data-security/ditch-chrome-5-next-gen-browsers-2026/
+
+  # Retired outright — recommendations were pinned to obsolete tool versions
+  # (GPT-4, Claude 2, Runway Gen-2), not just a wrong year label.
+  Redirect 301 /ai/top-10-ai-tools-2023-easier-life/ /
+  Redirect 301 /ai-apps/top-ai-productivity-tools-2023-retrospective/ /
+</IfModule>
+
+# Canonicalize to a trailing slash. Astro's static build writes every route
+# as <path>/index.html, so /foo and /foo/ both resolve on the server but are
+# two distinct URLs to a crawler — Search Console was indexing both and
+# splitting impressions/CTR across them. 301 to the slash form so every
+# internal link, backlink, and old indexed URL converges on one canonical
+# page. Skips real files (anything with a dot: .xml, .css, .jpg, etc.).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !\.\w+$
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [L,R=301]
+</IfModule>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/rss+xml application/xml
+</IfModule>
+
+# Cache policy
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Astro emits content-hashed asset filenames — safe to cache forever
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
