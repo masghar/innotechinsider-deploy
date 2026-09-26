@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>https://innotechinsider.com/ai/why-ai-giants-view-users-as-negative-assets/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>InnotechInsider</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T10:31:50.372Z</news:publication_date>
+      <news:title>The Free-Tier Trap: Why AI Giants Now View Everyday Users as Liabilities</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://innotechinsider.com/biz-it/nscale-secures-3-billion-pre-ipo-round-ai-datacenter/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>InnotechInsider</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T10:31:28.295Z</news:publication_date>
+      <news:title>Nscale Secures $3.36B Pre-IPO Round as Megawatt Race Hits Peak</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://innotechinsider.com/biz-it/great-gpu-heist-decoy-sand/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>InnotechInsider</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T10:31:06.837Z</news:publication_date>
+      <news:title>The High-Stakes Silicon Heist That Yielded 20 Tons of Sand</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://innotechinsider.com/science/ai-biomarker-discovery-disease-diagnostics/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>InnotechInsider</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T10:50:39.291Z</news:publication_date>
+      <news:title>The Silent Signal: How AI Found the Biomarkers Human Doctors Missed</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://innotechinsider.com/biz-it/gibney-elon-musk-documentary-trailer-hit-piece-analysis/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>InnotechInsider</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T10:50:13.700Z</news:publication_date>
+      <news:title>The Trailer for Alex Gibney&apos;s Elon Musk Film Ignites an All-Out War</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://innotechinsider.com/ai/alibaba-qwen-book-omarchy-linux-ai-laptop/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>InnotechInsider</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T10:49:50.882Z</news:publication_date>
+      <news:title>Alibaba Unveils Qwen Book: An Arch-Based AI Laptop Built for Autonomy</news:title>
+    </news:news>
+  </url>
+</urlset>
