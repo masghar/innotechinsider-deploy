@@ -1,0 +1,181 @@
+# InnotechInsider — Apache config for static hosting (Hostinger /public_html)
+
+# Branded 404 (Astro outputs /404.html at the site root)
+ErrorDocument 404 /404.html
+
+# Article redirects — stale-year cleanup (2026-09-02). The content pipeline
+# generated several evergreen "best of / top N" articles with a stale year
+# baked into the title (the Gemini prompt didn't know the real current date —
+# fixed in scripts/lib/gemini.mjs) and, separately, regenerated a few topics
+# more than once. Each cluster was consolidated to one corrected 2026 article;
+# duplicates and two articles whose actual recommendations were obsolete
+# (not just mis-dated) were retired. 301s preserve any existing links/rankings.
+<IfModule mod_alias.c>
+  Redirect 301 /ai-apps/ai-content-creation-2025-capabilities/ /ai-apps/top-ai-tools-content-creation-2026/
+  Redirect 301 /ai-apps/ai-content-creation-tools-2025-transformation/ /ai-apps/top-ai-tools-content-creation-2026/
+  Redirect 301 /ai-apps/top-ai-tools-content-creation-2025/ /ai-apps/top-ai-tools-content-creation-2026/
+  Redirect 301 /ai-apps/top-10-ai-tools-content-creation-2025/ /ai-apps/top-ai-tools-content-creation-2026/
+
+  Redirect 301 /ai/aio-chatgpt-traffic-2025-seo-dead/ /ai-apps/how-to-get-traffic-from-chatgpt-2026-aio-vs-seo/
+  Redirect 301 /ai-apps/chatgpt-referral-traffic-aio-vs-seo-2025/ /ai-apps/how-to-get-traffic-from-chatgpt-2026-aio-vs-seo/
+  Redirect 301 /ai-apps/how-to-get-traffic-from-chatgpt-2025-aio-vs-seo/ /ai-apps/how-to-get-traffic-from-chatgpt-2026-aio-vs-seo/
+
+  Redirect 301 /biz-it/best-pdf-editors-2025-guide/ /biz-it/best-pdf-editors-2026-guide/
+  Redirect 301 /data-security/ditch-chrome-5-next-gen-browsers-2025/ /data-security/ditch-chrome-5-next-gen-browsers-2026/
+
+  # Retired outright — recommendations were pinned to obsolete tool versions
+  # (GPT-4, Claude 2, Runway Gen-2), not just a wrong year label.
+  Redirect 301 /ai/top-10-ai-tools-2023-easier-life/ /
+  Redirect 301 /ai-apps/top-ai-productivity-tools-2023-retrospective/ /
+
+  # Phase 2 content-integrity audit (2026-10-21) — recategorized articles
+  # whose frontmatter category didn't match their actual topic. The old
+  # category is part of the URL, so each move needs its own 301.
+  Redirect 301 /science/ai-biomarker-discovery-disease-diagnostics/ /ai/ai-biomarker-discovery-disease-diagnostics/
+  Redirect 301 /science/ai-fellows-wet-lab-structural-biology-revolution/ /ai/ai-fellows-wet-lab-structural-biology-revolution/
+  Redirect 301 /apple/apple-car-key-lucid-xiaomi-ev-ecosystem/ /evs/apple-car-key-lucid-xiaomi-ev-ecosystem/
+  Redirect 301 /ai-models/claude-fable-5-anthropics-most-capable-model/ /ai/claude-fable-5-anthropics-most-capable-model/
+  Redirect 301 /science/cuspai-450-million-funding-generative-materials-science/ /ai/cuspai-450-million-funding-generative-materials-science/
+  Redirect 301 /ai-apps/google-gemini-free-student-tier-analysis/ /ai/google-gemini-free-student-tier-analysis/
+  Redirect 301 /ai-models/google-gemini-free-tier-drops-flagship-models/ /ai/google-gemini-free-tier-drops-flagship-models/
+  Redirect 301 /future-tech/google-pixel-11-neural-shutter-camera-feature-apple/ /apple/google-pixel-11-neural-shutter-camera-feature-apple/
+  Redirect 301 /future-tech/kraken-autonomous-shipping-unicorn-valuation/ /startups/kraken-autonomous-shipping-unicorn-valuation/
+  Redirect 301 /ai-apps/machine-learning-construction-cost-forecasting-breakthrough/ /ai/machine-learning-construction-cost-forecasting-breakthrough/
+  Redirect 301 /future-tech/neworbit-18-5m-series-a-vleo-future-space/ /startups/neworbit-18-5m-series-a-vleo-future-space/
+  Redirect 301 /ai-apps/openai-public-schools-chatgpt-education-partnerships/ /ai/openai-public-schools-chatgpt-education-partnerships/
+  Redirect 301 /data-security/supplier-breaches-tech-crown-jewels/ /cybersecurity/supplier-breaches-tech-crown-jewels/
+  Redirect 301 /5g/why-6g-ai-collision-breaks-telecom-business-model/ /ai/why-6g-ai-collision-breaks-telecom-business-model/
+
+  # Phase 2 content-integrity audit (2026-10-21) -- off-mission content
+  # (coupon/deal posts, daily puzzle answers, novelty posts) removed, and
+  # duplicate-cluster articles merged into the best surviving version. See
+  # reports/content-audit.md for the per-article rationale.
+  Redirect 301 /biz-it/4-discounted-tech-electronics-costco-august-2026/ /
+  Redirect 301 /future-tech/4th-of-july-sales-2026-ai-economy/ /
+  Redirect 301 /biz-it/algorithmic-clearance-ecommerce-dynamic-pricing-ai/ /
+  Redirect 301 /apple/amazon-prime-big-deal-days-apple-watch-199-deal/ /
+  Redirect 301 /future-tech/anker-solix-c2000-power-station-prime-day-deal/ /
+  Redirect 301 /apple/apple-extends-2026-back-to-school-promo-analysis/ /
+  Redirect 301 /apple/apple-watch-prime-day-discounts-strategic-shift/ /
+  Redirect 301 /apple/apple-watch-series-12-ultra-4-prime-day-deals-2026/ /
+  Redirect 301 /future-tech/best-amazon-prime-day-tech-deals-2026/ /
+  Redirect 301 /biz-it/best-pc-deals-desktop-all-in-one-guide/ /
+  Redirect 301 /biz-it/bh-photo-promo-codes-august-2026-deals-guide/ /
+  Redirect 301 /biz-it/death-of-the-promo-code-ai-retail-coupons/ /
+  Redirect 301 /biz-it/death-of-travel-coupon-codes-ai-pricing/ /
+  Redirect 301 /future-tech/early-prime-day-2026-roborock-robot-vacuum-deals/ /
+  Redirect 301 /startups/eric-trump-space-eyes-638m-spac-merger/ /
+  Redirect 301 /cybersecurity/high-res-home-security-reolink-12mp-poe-deal-market-shift/ /
+  Redirect 301 /future-tech/igarden-k70-cordless-pool-robot-autumn-sale/ /
+  Redirect 301 /apple/m3-max-macbook-pro-deal-pro-power/ /
+  Redirect 301 /apple/m6-mac-mini-2026-mac-studio-deals-buyer-guide/ /
+  Redirect 301 /ai/meta-mac-coding-agent-data-discount/ /
+  Redirect 301 /biz-it/microsoft-visio-pro-deal-workflow-automation/ /
+  Redirect 301 /gaming/nyt-connections-puzzle-psychology-ai-solving-strategy/ /
+  Redirect 301 /gaming/nyt-connections-sports-edition-puzzle-mechanics-tech/ /
+  Redirect 301 /gaming/nyt-pips-puzzle-mechanics-hints-strategy/ /
+  Redirect 301 /gaming/nyt-strands-hints-answers-august-24-2026/ /
+  Redirect 301 /biz-it/october-prime-day-2026-best-tech-deals/ /
+  Redirect 301 /gaming/oled-monitors-finally-getting-cheaper-5-best-picks/ /
+  Redirect 301 /future-tech/prime-day-2026-best-tv-streaming-deals/ /
+  Redirect 301 /future-tech/prime-day-2026-top-tech-deals/ /
+  Redirect 301 /biz-it/prime-day-early-deals-strategy/ /
+  Redirect 301 /ai/reddit-google-ai-data-licensing-reshape/ /
+  Redirect 301 /future-tech/shark-chillpill-cooling-climate-tech-discount/ /
+  Redirect 301 /future-tech/soundcore-boom-2-sale-portable-audio-analysis/ /
+  Redirect 301 /cybersecurity/vpn-deals-privacy-value/ /
+  Redirect 301 /future-tech/walmart-smart-tools-deals-july-2026/ /
+  Redirect 301 /future-tech/where-to-drive-a-real-tank-guide/ /
+  Redirect 301 /gaming/why-daily-micro-puzzles-hurdle-rule-our-mornings/ /
+  Redirect 301 /cybersecurity/windows-office-39-lifetime-deal-analysis/ /
+  Redirect 301 /gaming/wordle-today-august-19-2026-hints-answer-meta/ /
+  Redirect 301 /future-tech/5-android-phones-to-buy-instead-of-fold-ultra/ /future-tech/best-used-foldable-phones-to-buy-and-avoid-2026/
+  Redirect 301 /future-tech/5-android-phones-to-buy-instead-of-galaxy-z-flip/ /future-tech/best-used-foldable-phones-to-buy-and-avoid-2026/
+  Redirect 301 /apple/apple-design-resources-iphone-duo-iphone-18-pro-bezels/ /apple/iphone-18-pro-vs-iphone-duo-buyers-guide/
+  Redirect 301 /apple/apple-homeview-accessories-modular-ecosystem/ /apple/apple-homeview-smart-display-analysis-decade-review/
+  Redirect 301 /apple/apple-intelligence-siri-enterprise-app-layer/ /apple/ios-27-siri-ai-official-launch/
+  Redirect 301 /apple/apple-maps-lake-america-geopolitical-cartography/ /apple/apple-maps-lake-ontario-lake-america-cartography-glitch/
+  Redirect 301 /apple/apples-hardware-upgrade-shifts-reveal-future-of-apple-card/ /apple/apple-card-seven-year-retrospective-fintech/
+  Redirect 301 /apple/att-acknowledges-iphone-18-pro-max-connectivity-issues-update-immediately/ /apple/att-iphone-18-pro-max-connectivity-issues-apple-fix/
+  Redirect 301 /biz-it/baidu-ai-monetization-ernie-apollo-go-compute/ /biz-it/baidus-ai-cloud-growth-masking-ad-crisis/
+  Redirect 301 /biz-it/baidu-bidu-stock-forecast-analyst-predictions-2026/ /biz-it/baidus-ai-cloud-growth-masking-ad-crisis/
+  Redirect 301 /biz-it/best-laptop-docking-stations-2026-guide/ /biz-it/anker-10-in-1-dock-deal-discount-workstation-2026/
+  Redirect 301 /biz-it/bh-photo-promo-codes-deals-july-2026-guide/ /
+  Redirect 301 /spacex/blackrock-spacex-5bn-bet-ipo-demand/ /spacex/spacex-valuation-record-q3-2026-earnings-beat-starlink/
+  Redirect 301 /data-security/chatgpt-lockdown-mode-enterprise-trust-data-security/ /ai-apps/chatgpt-lockdown-mode-openai-enterprise-ai-security/
+  Redirect 301 /ai/daily-digital-ritual-ai-puzzles/ /
+  Redirect 301 /ai/eight-states-sue-openai-chatgpt-child-safety/ /ai/eight-states-sue-openai-safety-deception-lawsuit/
+  Redirect 301 /ai-apps/gemini-android-auto-clever-uses/ /ai-apps/google-gemini-cars-useful/
+  Redirect 301 /ai-apps/gemini-smart-home-proactive-ai-update/ /ai/gemini-home-update-proactive-ai/
+  Redirect 301 /gaming/hurdle-2026-daily-puzzles-ai-future/ /
+  Redirect 301 /biz-it/india-gccs-ai-cloud-hiring-it-services-trail/ /biz-it/india-gccs-ai-cloud-hiring-surge/
+  Redirect 301 /apple/ios-27-beta-conversational-siri-liquid-glass/ /apple/ios-27-siri-ai-official-launch/
+  Redirect 301 /apple/iphone-18-pro-max-official-launch-a20-chip/ /apple/iphone-18-pro-vs-iphone-duo-buyers-guide/
+  Redirect 301 /apple/iphone-18-pro-wait-worth/ /apple/iphone-18-pro-vs-iphone-duo-buyers-guide/
+  Redirect 301 /apple/iphone-duo-first-foldable-launch/ /apple/iphone-18-pro-vs-iphone-duo-buyers-guide/
+  Redirect 301 /apple/iphone-duo-foldable-rumor-apple-pencil-price/ /apple/iphone-18-pro-vs-iphone-duo-buyers-guide/
+  Redirect 301 /ai-apps/limewire-ai-studio-review-2023-creator-economy/ /ai-apps/limewire-ai-studio-review/
+  Redirect 301 /future-tech/meta-pauses-smart-glasses-rate-limits-backlash/ /future-tech/meta-unveils-1299-spatial-glasses-hearing-aid-ai/
+  Redirect 301 /ai/microsoft-maia-200-ai-chip-nvidia-independence/ /ai/microsoft-maia-300-ai-chip-nvidia-independence/
+  Redirect 301 /biz-it/nscale-secures-3-billion-pre-ipo-round-ai-datacenter/ /startups/nscale-raises-3-billion-pre-ipo-ai-data-centers/
+  Redirect 301 /ai/nvidia-wall-street-500-billion-ai-infrastructure-buildout/ /biz-it/nvidia-gpu-financialization-wall-street-assets/
+  Redirect 301 /gaming/nyt-connections-sports-edition-gamification-strategy/ /
+  Redirect 301 /gaming/nyt-connections-sports-edition-puzzle-strategy/ /
+  Redirect 301 /gaming/nyt-connections-sports-edition-strategy-puzzle-design/ /
+  Redirect 301 /gaming/nyt-pips-hints-answers-algorithmic-game-design/ /
+  Redirect 301 /gaming/nyt-pips-hints-answers-august-19-2026/ /
+  Redirect 301 /gaming/nyt-strands-micro-puzzles-gaming-attention-economy/ /
+  Redirect 301 /gaming/nyt-strands-puzzle-design-ai-gaming/ /
+  Redirect 301 /ai-models/openai-astra-model-critical-hacking-capabilities/ /ai-models/openai-gpt-6-astra-launch-autonomous-intelligence/
+  Redirect 301 /ai-apps/openai-dots-ambient-agents-meta-muse-launch/ /ai-apps/openai-dots-meta-muse-mascots-ai-avatars/
+  Redirect 301 /ai-models/openai-halts-astra-model-cybersecurity-delay/ /ai-models/openai-gpt-6-astra-launch-autonomous-intelligence/
+  Redirect 301 /biz-it/salesforce-anthropic-claude-agentforce-enterprise-shift/ /biz-it/salesforce-autonomous-ai-agents-enterprise-pivot/
+  Redirect 301 /gaming/science-of-daily-solve-nyt-puzzle-games-tech/ /
+  Redirect 301 /biz-it/siri-enterprise-ai-app-layer/ /apple/ios-27-siri-ai-official-launch/
+  Redirect 301 /ai-models/why-openai-astra-model-spooks-ai-researchers/ /ai-models/openai-gpt-6-astra-launch-autonomous-intelligence/
+  Redirect 301 /biz-it/windows-11-search-bing-toggle-user-control/ /biz-it/windows-11-search-bing-toggle-user-choice/
+
+  # Phase 2 follow-up (2026-10-22) — the regenerated "human rewrite" batch
+  # produced a fresh near-duplicate with an insider article from earlier
+  # the same day; kept the more recent/complete of the two.
+  Redirect 301 /spacex/starship-reusability-math-closing/ /spacex/starship-full-reusability-engineering-hurdles-2026/
+</IfModule>
+
+# Canonicalize to a trailing slash. Astro's static build writes every route
+# as <path>/index.html, so /foo and /foo/ both resolve on the server but are
+# two distinct URLs to a crawler — Search Console was indexing both and
+# splitting impressions/CTR across them. 301 to the slash form so every
+# internal link, backlink, and old indexed URL converges on one canonical
+# page. Skips real files (anything with a dot: .xml, .css, .jpg, etc.).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !\.\w+$
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [L,R=301]
+</IfModule>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/rss+xml application/xml
+</IfModule>
+
+# Cache policy
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Astro emits content-hashed asset filenames — safe to cache forever
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
