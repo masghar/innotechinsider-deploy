@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Content-Signal: an emerging robots.txt extension (distinct from per-bot
+# User-agent blocks above) stating how this content may be used. search=yes
+# keeps normal search indexing; ai-train=no opts out of using it as AI
+# training data; ai-input=yes still allows it to be retrieved/cited as
+# context for a live user query (e.g. search/answer engines).
+Content-Signal: search=yes, ai-train=no, ai-input=yes
+
+Sitemap: https://innotechinsider.com/sitemap-index.xml
+Sitemap: https://innotechinsider.com/news-sitemap.xml
