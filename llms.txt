@@ -1,0 +1,45 @@
+# InnotechInsider
+
+> Original reporting and sharp analysis on AI, startups, EVs, security, space, and the technology shaping tomorrow.
+
+InnotechInsider is an independently operated technology-news publication
+(see /about and /masthead). Articles are produced with AI assistance under
+human-set editorial direction and automated publishing — see /ethics for
+the full disclosure. Content-Signal and llms.txt both reflect our stance:
+indexing and citation are welcome; bulk AI-training use of this content is
+not authorized (see /robots.txt).
+
+## Key pages
+- [Browse all articles](https://innotechinsider.com/search/): live search/browse across the full catalog
+- [Tech Layoffs Tracker](https://innotechinsider.com/tech-layoffs-tracker/): daily-updated, original count of verified tech layoffs by company/country/industry, every entry sourced and linked
+- [RSS feed](https://innotechinsider.com/rss.xml): all articles, newest first
+- [About](https://innotechinsider.com/about/): what this publication is and who runs it
+- [Masthead](https://innotechinsider.com/masthead/): the editorial bylines publishing here
+- [Editorial Policy](https://innotechinsider.com/editorial-policy/): sourcing and correction standards
+- [Ethics & AI Disclosure](https://innotechinsider.com/ethics/): how and where AI is used in our process
+- [Corrections](https://innotechinsider.com/corrections/): corrections log and how to request one
+- [Contact & Tips](https://innotechinsider.com/contact/): reach the newsroom
+
+## Categories
+- [Artificial Intelligence](https://innotechinsider.com/ai/): The models, research, and breakthroughs reshaping how machines think.
+- [New AI Models](https://innotechinsider.com/ai-models/): Fresh frontier models, benchmarks, and what each new release actually changes.
+- [AI Apps & Tools](https://innotechinsider.com/ai-apps/): The software putting AI to work — agents, copilots, and the tools built on top.
+- [Business & IT](https://innotechinsider.com/biz-it/): Enterprise moves, cloud, and the business of running modern technology.
+- [Electric Vehicles](https://innotechinsider.com/evs/): The cars, batteries, and charging networks driving transport off oil.
+- [5G & Connectivity](https://innotechinsider.com/5g/): Next-gen networks, spectrum, and the infrastructure connecting everything.
+- [Gaming](https://innotechinsider.com/gaming/): Hardware, studios, and the technology behind the games we play.
+- [Science](https://innotechinsider.com/science/): Discoveries at the edge of physics, biology, energy, and beyond.
+- [Cybersecurity](https://innotechinsider.com/cybersecurity/): Breaches, defenses, and the ongoing fight to keep systems safe.
+- [Blockchain & Crypto](https://innotechinsider.com/crypto/): Tokens, protocols, regulation, and the rebuilding of digital money.
+- [Startups](https://innotechinsider.com/startups/): Funding, founders, and the companies trying to build the next big thing.
+- [Apple](https://innotechinsider.com/apple/): iPhone, Mac, Vision, and everything out of Cupertino.
+- [SpaceX & Space](https://innotechinsider.com/spacex/): Rockets, satellites, and humanity’s expanding footprint beyond Earth.
+- [Future Tech](https://innotechinsider.com/future-tech/): Robotics, quantum, biotech — the technologies still taking shape.
+- [Data & Security](https://innotechinsider.com/data-security/): Privacy, data governance, and who controls your information.
+
+## Machine-readable formats
+- Sitemap: https://innotechinsider.com/sitemap-index.xml
+- News sitemap: https://innotechinsider.com/news-sitemap.xml
+- Search index (JSON): https://innotechinsider.com/search.json
+- Any article page is also available as Markdown at the same path with
+  `index.md` in place of the page, or by sending `Accept: text/markdown`.
