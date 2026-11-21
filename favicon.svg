@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="InnotechInsider">
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="6.28" y1="-1.49" x2="29.59" y2="29.59">
+      <stop offset="0" stop-color="#ff3d57" />
+      <stop offset="1" stop-color="#8b2f8f" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="1.8" width="13.33" height="24.34" rx="6.67" fill="url(#g)" opacity="0.6" />
+  <rect x="14.67" y="5.86" width="13.33" height="24.34" rx="6.67" fill="url(#g)" />
+</svg>
